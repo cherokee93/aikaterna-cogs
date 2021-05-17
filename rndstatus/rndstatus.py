@@ -102,15 +102,16 @@ class RndStatus(commands.Cog):
         1 = Streaming
         2 = Listening
         3 = Watching
+        4 = Custom
         5 = Competing"""
-        if 0 <= status_type <= 3 or 0 != 5:
-            rnd_type = {0: "playing", 1: "streaming", 2: "listening", 3: "watching", 5: "competing"}
+        if 0 <= status_type <= 4 or 0 != 5:
+            rnd_type = {0: "playing", 1: "streaming", 2: "listening", 3: "watching", 4: "listening", 5: "competing"}
             await self.config.type.set(status_type)
             await self.presence_updater()
             await ctx.send(f"Rndstatus activity type set to {rnd_type[status_type]}.")
         else:
             await ctx.send(
-                f"Status activity type must be between 0 and 3 or 5. "
+                f"Status activity type must be between 0 and 5. "
                 f"See `{ctx.prefix}help rndstatus type` for more information."
             )
 
